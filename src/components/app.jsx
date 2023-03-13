@@ -19,12 +19,13 @@ function App() {
 
   async function deleteNote(id) {
     try {
-      const response = await fetch("http://localhost:3001/api/note/" + id, {
+      const response = await fetch("http://localhost:3001/api/note/", {
         method: "DELETE",
         headers: { "Content-Type": "Application/json" },
         body: JSON.stringify({ id }),
       });
-      const data = await response.JSON();
+      const data = await response.json();
+      window.location.reload();
       console.log(data);
     } catch (err) {
       console.log(err);
@@ -41,7 +42,7 @@ function App() {
             title={note.title}
             body={note.body}
             key={index}
-            id={note.id}
+            id={note._id}
             onDelete={deleteNote}
           ></Note>
         );
