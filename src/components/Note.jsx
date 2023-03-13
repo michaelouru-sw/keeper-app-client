@@ -4,7 +4,10 @@ import Card from "@mui/material/Card";
 import { CardActions, CardContent } from "@mui/material";
 
 function Note(props) {
-  function deleteNote() {}
+  async function deleteNote(event) {
+    props.onDelete(props.id);
+    console.log(event.body);
+  }
 
   return (
     <div className="note">

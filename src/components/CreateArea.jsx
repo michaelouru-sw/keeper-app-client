@@ -1,82 +1,3 @@
-// import React, { useState } from "react";
-// import AddIcon from "@mui/icons-material/Add";
-// import Input from "@mui/material/Input";
-// import TextField from "@mui/material/TextField";
-// import Fab from "@mui/material/Fab";
-// import { Zoom } from "@mui/material";
-
-// function CreateArea(props) {
-// const [inputActive, setInputActive] = useState(false);
-//   const [newNote, setNote] = useState({
-//     title: "",
-//     body: "",
-//   });
-
-// function changeInputState() {
-//   setInputActive(true);
-// }
-
-//   function handleChange(event) {
-//     const { name, value } = event.target;
-//     setNote((prevNote) => {
-//       return {
-//         ...prevNote,
-//         [name]: value,
-//       };
-//     });
-//   }
-
-//   function submitForm(event) {
-//     props.onAdd(newNote);
-//     setNote({
-//       title: "",
-//       body: "",
-//     });
-
-//     event.preventDefault();
-//   }
-
-//   return (
-//     <div>
-//       <Zoom in={true}>
-//         <form className="create-note">
-//           {inputActive && (
-//             <Input
-//               name="title"
-//               type="text"
-//               placeholder="Title"
-//               autoFocus={true}
-//               fullWidth={true}
-//               value={newNote.title}
-//               onChange={handleChange}
-//             />
-//           )}
-//           <Zoom in={true}>
-//             <TextField
-//               name="body"
-//               maxRows="10"
-//               onClick={changeInputState}
-//               multiline={true}
-//               fullWidth={true}
-//               placeholder="Enter note"
-//               variant="standard"
-//               value={newNote.body}
-//               onChange={handleChange}
-//             ></TextField>
-//           </Zoom>
-//           {inputActive && (
-//             <Fab onClick={submitForm}>
-//               <AddIcon />
-//             </Fab>
-//           )}
-//         </form>
-//       </Zoom>
-//     </div>
-//   );
-// }
-
-// export default CreateArea;
-
 import React, { useState } from "react";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
@@ -109,6 +30,7 @@ const CreateArea = (props) => {
     }
     setTitle("");
     setBody("");
+    window.location.reload();
   };
 
   const handleTitleChange = (event) => setTitle(event.target.value);
@@ -122,11 +44,11 @@ const CreateArea = (props) => {
           fullWidth={true}
           id="title"
           name="title"
-          label="Title"
           value={title}
           onChange={handleTitleChange}
           autoFocus={true}
           variant="standard"
+          placeholder="Title"
         />
       )}
       <br />
@@ -134,7 +56,6 @@ const CreateArea = (props) => {
         fullWidth={true}
         id="body"
         name="body"
-        label="Body"
         multiline
         rows={inputActive ? 4 : 1}
         onClick={changeInputState}
